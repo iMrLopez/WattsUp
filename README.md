@@ -1,49 +1,148 @@
 
-# WattsUp
-
-
-| ![WattsUp Logo](./assets/logo-nobg.png) |  A machine learning-powered system for predicting the impact of electric vehicle (EV) charging on electricity costs. Users can input their consumption data, EV model, and tariff details to receive personalized cost estimates. Built with FastAPI, React, and PostgreSQL. 🚗⚡|
+| ![WattsUp Logo](./assets/logo-nobg.png) | A machine learning-powered system for predicting the impact of electric vehicle (EV) charging on electricity costs. Users can input their consumption data, EV model, and tariff details to receive personalized cost estimates. Built with FastAPI, React, and PostgreSQL. 🚗⚡|
 |--|--|
 
+## Table of Contents
 
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Project Structure](#project-structure)
+-   [Docker & Deployment](#docker--deployment)
+-   [Manual Installation & Setup](#installation--setup)
+-   [Prolog Query Endpoints](#prolog-query-endpoints)
 
-# FastAPI Python Backend Service
+## Features
 
-WattsUp/
-│── backend/
-│   ├── app/
-│   │   ├── __init__.py              # Package marker
-│   │   ├── main.py                  # FastAPI application entry point (creates the app, includes routers & middleware)
-│   │   ├── config.py                # Application configuration (environment variables, settings)
-│   │   ├── database.py              # Database connection logic
-│   │   ├── schemas.py               # Pydantic models for request/response validation
-│   │   ├── core/
-│   │   │   └── prolog_engine.py     # Contains functions for interacting with Prolog (query, add fact)
-│   │   └── routers/                 # API endpoints organized by feature
-│   │       ├── __init__.py          # Package marker for routers
-│   │       ├── query.py             # Endpoints for executing Prolog rules and adding facts
-│   │       └── cars.py              # Endpoint for retrieving car data from the PostgreSQL database
-│   ├── requirements.txt             # Python dependencies
-│   ├── Dockerfile                   # Dockerfile for building the backend container
-│   └── README.md                    # Documentation for the backend service
+-   **Modern Frontend:** Developed with Next.js, featuring server-side rendering and TypeScript for robust code.
+-   **Backend API:** Python-based backend with modular routers and database integration.
+-   **Rule-Based Analysis:** Incorporates Prolog rules for energy efficiency and charge rate calculations.
+-   **Database Management:** SQL scripts and CSV data are provided to initialize and populate the car database.
+-   **Dockerized Environment:** Docker and Docker Compose configuration for easy deployment and consistent environments.
 
-## Usage
+## Project Structure
 
+```
+├── backend
+│   ├── app
+│   │   ├── routers
+│   │   ├── core
+│   │   ├── models.py
+│   │   ├── database.py
+│   │   ├── config.py
+│   │   └── main.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── .gitignore
+├── databaseDefinition
+│   ├── a_init_cars.sql
+│   └── b_cars_data.csv
+├── frontend
+│   ├── components
+│   ├── pages
+│   ├── public
+│   ├── styles
+│   ├── package.json
+│   ├── tsconfig.json
+├── utils
+│   └── start_clean.sh
+├── docker-compose.yml
+├── .gitignore
+└── README.md` 
+```
+
+## Docker & Deployment Setup
+
+The project includes a `docker-compose.yml` file for easier containerized deployment. To build and run the entire application with Docker:
+
+`docker-compose up --build` 
+
+This command will start both the frontend and backend services, along with any other configured services (like the database).
+
+## Manual Installation & Setup
+
+### Frontend
+
+1.  **Navigate to the frontend directory:**
+    
+    `cd frontend` 
+    
+2.  **Install dependencies:**
+    
+    `npm install` 
+    
+3.  **Run the development server:**    
+    `npm run dev` 
+    
+
+### Backend
+
+1.  **Navigate to the backend directory:**
+    
+    `cd backend` 
+    
+2.  **Create a virtual environment (optional but recommended):**
+    
+    
+    `python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate` 
+    
+3.  **Install dependencies:**
+
+    
+    `pip install -r requirements.txt` 
+    
+4.  **Run the backend server:**
+  
+    
+    `python app/main.py` 
+    
+
+### Database Initialization
+
+-   The `databaseDefinition` folder contains an SQL script (`a_init_cars.sql`) to set up your database schema and a CSV file (`b_cars_data.csv`) with car data.
+-   Use your preferred SQL client or command line tool to execute the SQL script.
+-   Import the CSV data into your database according to your database system’s guidelines.
+
+## Running the Application
+
+-   **Frontend:** Accessible at http://localhost:3000 (or your configured port).
+-   **Backend:** Runs on its designated port (configured in your `config.py` or via environment variables).
+
+Make sure the backend API endpoint is correctly referenced by your frontend application.
+
+---
 ### Prolog Query Endpoints
+
+  
 
 This service supports multiple Prolog rules stored in the `app/core/prolog_engine.py` file and additional rules in the `app/routers` (if needed). The rules are loaded automatically and can be accessed via the query endpoints.
 
-- **GET /query?rule=&args=**  
-  Executes a Prolog rule with comma-separated arguments.  
-  **Example:**  
-    `http://localhost:8000/query?rule=charging_rate&args=Rate`
+  
 
+-  **GET /query?rule=&args=**
 
-- **POST /query/add_fact**  
-Adds a new fact to the Prolog engine.  
+Executes a Prolog rule with comma-separated arguments.
+
+**Example:**
+
+`http://localhost:8000/query?rule=charging_rate&args=Rate`
+
+  
+  
+
+-  **POST /query/add_fact**
+
+Adds a new fact to the Prolog engine.
+
 **Example using curl:**
+
 ```bash
-curl --location 'http://localhost:8000/query/add_fact' \
-     --header 'Content-Type: application/json' \
-     --data '{"fact": "battery_capacity(20)"}'
+
+curl  --location  'http://localhost:8000/query/add_fact'  \
+
+--header 'Content-Type: application/json' \
+
+--data  '{"fact": "battery_capacity(20)"}'
+
 ```
+
