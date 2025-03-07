@@ -1,19 +1,19 @@
-FROM node:18-alpine
+FROM node:18-slim
 
-# Install build tools and extra utilities required for building native modules
-RUN apk add --no-cache build-base autoconf automake libtool
+# Install required build tools (especially if you need to build native modules)
+RUN apt-get update && apt-get install -y \
+  build-essential autoconf automake libtool \
+  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy dependency definitions and install dependencies
+# Copy package.json and package-lock.json from the build context into /app
 COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the source code
 COPY . .
 
-# Expose Next.js default development port
 EXPOSE 3000
 
-# Start Next.js in development mode (with hot reloading)
 CMD ["npm", "run", "dev"]

@@ -1,5 +1,7 @@
 module.exports = {
   images: {
+    domains: ['ev-database.org'],
+
     remotePatterns: [
       {
         protocol: "https",

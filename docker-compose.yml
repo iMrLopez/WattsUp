@@ -14,11 +14,18 @@ services:
       POSTGRES_PORT: "5432"
   
   wu-frontend:
-    build: ./frontend
+    build:
+      # Use the 'frontend' folder as the build context
+      context: ./frontend
+      # Dockerfile is also inside 'frontend'
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    # For local dev, mount the frontend folder into /app
     volumes:
-      - .:/app
+      - ./frontend:/app
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: "http://wu-backend:8000"      
 
   wu-postgres:
     image: postgres:13
