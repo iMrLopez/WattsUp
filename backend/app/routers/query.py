@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from core.prolog_engine import query_prolog, add_prolog
-from schemas import FactInput
+from models import FactInput
 
 router = APIRouter()
 
