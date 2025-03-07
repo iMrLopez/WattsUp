@@ -1,0 +1,28 @@
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# FastAPI/Uvicorn
+*.db
+instance/
+
+# Prolog related
+rules/*.pl~  # Temporary Prolog files
+
+# OS Files
+.DS_Store
+Thumbs.db
