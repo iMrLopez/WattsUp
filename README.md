@@ -6,9 +6,9 @@
 
 -   [Overview](#overview)
 -   [Features](#features)
--   [Project Structure](#project-structure)
--   [Docker & Deployment](#docker--deployment)
--   [Manual Installation & Setup](#installation--setup)
+-   [Project Structure](#pre-requisites)
+-   [Pre-requisites](#docker--deployment)
+- [Setup & run the application](#setup-and-run-the-application)
 -   [Prolog Query Endpoints](#prolog-query-endpoints)
 
 ## Features
@@ -50,7 +50,16 @@
 └── README.md` 
 ```
 
-## Docker & Deployment Setup
+## Pre-requisites
+
+- install docker  desktop from [here](https://docs.docker.com/desktop/)
+
+## Setup and run the application
+
+### Easy start (for mac m1 & superior)
+With docker installed, run the comand `./utils/start_clean.sh`
+
+### Docker & Deployment Setup
 
 The project includes a `docker-compose.yml` file for easier containerized deployment. To build and run the entire application with Docker:
 
@@ -58,9 +67,9 @@ The project includes a `docker-compose.yml` file for easier containerized deploy
 
 This command will start both the frontend and backend services, along with any other configured services (like the database).
 
-## Manual Installation & Setup
+### Manual Installation & Setup
 
-### Frontend
+#### Frontend
 
 1.  **Navigate to the frontend directory:**
     
@@ -74,7 +83,7 @@ This command will start both the frontend and backend services, along with any o
     `npm run dev` 
     
 
-### Backend
+#### Backend
 
 1.  **Navigate to the backend directory:**
     
@@ -103,7 +112,7 @@ This command will start both the frontend and backend services, along with any o
 -   Use your preferred SQL client or command line tool to execute the SQL script.
 -   Import the CSV data into your database according to your database system’s guidelines.
 
-## Running the Application
+### Running the Application
 
 -   **Frontend:** Accessible at http://localhost:3000 (or your configured port).
 -   **Backend:** Runs on its designated port (configured in your `config.py` or via environment variables).
