@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  wu-backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app   # Adjust the paths as needed
+    environment:
+      POSTGRES_HOST: wu-postgres
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_PORT: "5432"
+  
+  wu-frontend:
+    build:
+      # Use the 'frontend' folder as the build context
+      context: ./frontend
+      # Dockerfile is also inside 'frontend'
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    # For local dev, mount the frontend folder into /app
+    volumes:
+      - ./frontend:/app
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: "http://wu-backend:8000"      
+
+  wu-postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - ./databaseDefinition:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgadmin-data:

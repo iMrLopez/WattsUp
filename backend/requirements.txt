@@ -1,3 +1,5 @@
 fastapi
 uvicorn
 pyswip
+psycopg2-binary
+pydantic-settings
