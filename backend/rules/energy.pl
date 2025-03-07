@@ -38,3 +38,5 @@ charging_rate(20).    % Tasa de carga en kW
 
 % Consulta:
 % ?- watts_required(Watts).
+:- dynamic charging_duration/1.
+:- dynamic charging_rate/1.
