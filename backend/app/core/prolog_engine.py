@@ -1,6 +1,7 @@
 from pyswip import Prolog
 from models import FactInput
 import os
+import statistics
 
 prolog = Prolog()
 RULES_DIR = "rules"
@@ -11,7 +12,16 @@ for filename in os.listdir(RULES_DIR):
 def query_prolog(rule: str, *args):
     query_str = f"{rule}({', '.join(args)})"
     results = list(prolog.query(query_str))
-    return results
+    if not results:
+        return None
+    
+    # Extract numerical values from results
+    values = [list(res.values())[0] for res in results if isinstance(list(res.values())[0], (int, float))]
+    
+    if not values:
+        return None
+    
+    return statistics.mean(values)  # Return mean value
 
 def add_prolog(fact_data: FactInput):
     try:
