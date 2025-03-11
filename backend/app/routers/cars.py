@@ -8,45 +8,43 @@ router = APIRouter()
 @router.get("/", response_model=List[Car])
 def get_all_cars():
     try:
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute(
-            """
-            SELECT id, position, model_name, availability_date, market_segment, number_of_seats,
-                   range, efficiency, weight, acceleration_0_100, one_stop_range, battery_capacity,
-                   fastcharge_speed, towing_capacity, cargo_volume, price_per_range, price_in_germany,
-                   price_in_netherlands, price_in_uk, vehicle_url, image_url
-            FROM cars;
-            """
-        )
-        rows = cur.fetchall()
-        cur.close()
-        conn.close()
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT id, position, model_name, number_of_seats,
+                           range, efficiency, weight, acceleration_0_100, one_stop_range, battery_capacity,
+                           fastcharge_speed, towing_capacity, cargo_volume, price_in_uk, image_url,
+                           launch_date, discontinue_date, is_available
+                    FROM cars;
+                    """
+                )
+                rows = cur.fetchall()
 
         # Convert each row to a Car instance.
-        cars = [Car(
-            id=row[0],
-            position=row[1],
-            model_name=row[2],
-            availability_date=row[3],
-            market_segment=row[4],
-            number_of_seats=row[5],
-            range=row[6],
-            efficiency=row[7],
-            weight=row[8],
-            acceleration_0_100=row[9],
-            one_stop_range=row[10],
-            battery_capacity=row[11],
-            fastcharge_speed=row[12],
-            towing_capacity=row[13],
-            cargo_volume=row[14],
-            price_per_range=row[15],
-            price_in_germany=row[16],
-            price_in_netherlands=row[17],
-            price_in_uk=row[18],
-            vehicle_url=row[19],
-            image_url=row[20]
-        ) for row in rows]
+        cars = [
+            Car(
+                id=row[0],
+                position=row[1],
+                model_name=row[2],
+                number_of_seats=row[3],
+                range=str(row[4]),
+                efficiency=str(row[5]),
+                weight=str(row[6]),
+                acceleration_0_100=str(row[7]),
+                one_stop_range=str(row[8]),
+                battery_capacity=str(row[9]),
+                fastcharge_speed=str(row[10]),
+                towing_capacity=str(row[11]),
+                cargo_volume=str(row[12]),
+                price_in_uk=str(row[13]),
+                image_url=str(row[14]),
+                launch_date=str(row[15]),
+                discontinue_date=str(row[16]),
+                is_available=bool(row[17])
+            ) 
+            for row in rows
+        ]
 
         return cars
 

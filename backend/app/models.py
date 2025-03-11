@@ -7,8 +7,6 @@ class Car(BaseModel):
     id: int
     position: int
     model_name: str
-    availability_date: str
-    market_segment: str
     number_of_seats: int
     range: str
     efficiency: str
@@ -19,12 +17,11 @@ class Car(BaseModel):
     fastcharge_speed: str
     towing_capacity: str
     cargo_volume: str
-    price_per_range: str
-    price_in_germany: str
-    price_in_netherlands: str
     price_in_uk: str
-    vehicle_url: str
     image_url: str
+    launch_date: str
+    discontinue_date: str
+    is_available: bool
 
     class Config:
         orm_mode = True

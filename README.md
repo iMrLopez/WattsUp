@@ -56,7 +56,7 @@
 
 ## Setup and run the application
 
-### Easy start (for mac m1 & superior)
+### Easy & clean start (for mac m1 & superior)
 With docker installed, run the comand `./utils/start_clean.sh`
 
 ### Docker & Deployment Setup
@@ -136,8 +136,7 @@ Executes a Prolog rule with comma-separated arguments.
 
 `http://localhost:8000/query?rule=charging_rate&args=Rate`
 
-  
-  
+ 
 
 -  **POST /query/add_fact**
 
@@ -145,12 +144,11 @@ Adds a new fact to the Prolog engine.
 
 **Example using curl:**
 
+*** Adds a new 
 ```bash
 
 curl  --location  'http://localhost:8000/query/add_fact'  \
-
 --header 'Content-Type: application/json' \
-
 --data  '{"fact": "battery_capacity(20)"}'
 
 ```

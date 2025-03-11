@@ -2,31 +2,26 @@ CREATE TABLE IF NOT EXISTS cars (
     id SERIAL PRIMARY KEY,
     position INTEGER,
     model_name TEXT,
-    availability_date TEXT,
-    market_segment TEXT,
     number_of_seats INTEGER,
     range TEXT,
-    efficiency TEXT,
-    weight TEXT,
+    efficiency TEXT, -- Wh/km
+    weight TEXT, -- kg
     acceleration_0_100 TEXT,
-    one_stop_range TEXT,
-    battery_capacity TEXT,
-    fastcharge_speed TEXT,
-    towing_capacity TEXT,
+    one_stop_range TEXT, -- km
+    battery_capacity TEXT, -- kWh
+    fastcharge_speed TEXT, -- kW
+    towing_capacity TEXT, -- kg
     cargo_volume TEXT,
-    price_per_range TEXT,
-    price_in_germany TEXT,
-    price_in_netherlands TEXT,
     price_in_uk TEXT,
-    vehicle_url TEXT,
-    image_url TEXT
+    image_url TEXT,
+    launch_date TEXT,
+    discontinue_date TEXT,
+    is_available BOOLEAN
 );
 
 COPY cars(
     position,
     model_name,
-    availability_date,
-    market_segment,
     number_of_seats,
     range,
     efficiency,
@@ -37,13 +32,12 @@ COPY cars(
     fastcharge_speed,
     towing_capacity,
     cargo_volume,
-    price_per_range,
-    price_in_germany,
-    price_in_netherlands,
     price_in_uk,
-    vehicle_url,
-    image_url
+    image_url,
+    launch_date,
+    discontinue_date,
+    is_available
 )
-FROM '/docker-entrypoint-initdb.d/b_cars_data.csv'
-DELIMITER ','
+FROM '/docker-entrypoint-initdb.d/cars_data.csv'
+DELIMITER ';'
 CSV HEADER;
