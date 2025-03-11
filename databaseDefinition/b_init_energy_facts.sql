@@ -19,6 +19,6 @@ INSERT INTO energy_cars_facts (model_name, battery_capacity, launch_date)
 SELECT 
     model_name, 
     battery_capacity, 
-    TO_DATE(NULLIF(launch_date, ''), 'DD-MM-YYYY')  -- Convert empty strings to NULL before converting to DATE
+    TO_DATE(NULLIF(launch_date, ''), 'YYYY-MM-DD')  -- Convert empty strings to NULL before converting to DATE
 FROM cars
 WHERE launch_date IS NOT NULL AND launch_date <> '';

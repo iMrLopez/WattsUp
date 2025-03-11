@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from core.prolog_engine import query_prolog, add_prolog
+from core.prolog_engine import query_prolog, add_prolog, seed_battery_age_facts
 from models import FactInput
 
 router = APIRouter()
@@ -13,3 +13,8 @@ def query(rule: str, args: str):
 @router.post("/add_fact")
 def add_fact(fact_data: FactInput):
     return add_prolog(fact_data)
+
+
+@router.post("/seed")
+def add_fact():
+    return seed_battery_age_facts()

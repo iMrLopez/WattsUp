@@ -1,3 +1,4 @@
+from core.prolog_engine import seed_battery_age_facts
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
@@ -21,3 +22,4 @@ app.include_router(cars.router, prefix="/cars", tags=["cars"])
 @app.get("/")
 def read_root():
     return {"message": "Hello from FastAPI!"}
+
