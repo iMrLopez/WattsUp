@@ -13,7 +13,6 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ cars }) => {
   const [car, setPressedCar] = React.useState<Car | null>(null);
 
-
   return (
     <>
       <Head>
@@ -21,7 +20,7 @@ const Home: NextPage<HomeProps> = ({ cars }) => {
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-          <FormComponent car={car}/>
+          <FormComponent car={car} />
           {cars.map((car) => (
             <CarComponent car={car} onPress={(car) => setPressedCar(car)} />
           ))}
