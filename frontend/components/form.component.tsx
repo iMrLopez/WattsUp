@@ -48,6 +48,9 @@ export default function FormComponent({ car }: FormComponentProps) {
       <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">
         WattsUp
       </h1>
+      <div className="flex items-center justify-center mb-6">
+        <Image src="/logo-nobg.png" alt="WattsUp Logo" width={150} height={50} priority />
+      </div>
       <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch]">
         {car ? `You selected the ${car.model_name}` : "Select a car"}
       </p>
