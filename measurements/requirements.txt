@@ -1,0 +1,4 @@
+requests
+psutil
+pandas       # opcional, sólo si vas a medir calidad de inferencia
+scikit-learn # opcional, sólo si vas a medir calidad de inferencia

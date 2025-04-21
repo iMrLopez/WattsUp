@@ -1,0 +1,213 @@
+[
+    {
+      "battery_capacity": 87.6,
+      "vehicle_age": 7.6,
+      "charging_duration": 2.0,
+      "company": "ICE",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 58.9,
+      "vehicle_age": 9.2,
+      "charging_duration": 3.4,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 40.5,
+      "vehicle_age": 7.9,
+      "charging_duration": 0.7,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 43.5,
+      "vehicle_age": 4.5,
+      "charging_duration": 3.5,
+      "company": "CNFL",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 37.6,
+      "vehicle_age": 1.8,
+      "charging_duration": 2.3,
+      "company": "CNFL",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 49.9,
+      "vehicle_age": 8.5,
+      "charging_duration": 3.3,
+      "company": "CNFL",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 73.9,
+      "vehicle_age": 0.3,
+      "charging_duration": 3.9,
+      "company": "ICE",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 93.4,
+      "vehicle_age": 6.9,
+      "charging_duration": 2.2,
+      "company": "CNFL",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 85.2,
+      "vehicle_age": 0.7,
+      "charging_duration": 3.4,
+      "company": "CNFL",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 66.8,
+      "vehicle_age": 9.1,
+      "charging_duration": 1.7,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 56.9,
+      "vehicle_age": 6.8,
+      "charging_duration": 3.6,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 89.5,
+      "vehicle_age": 0.8,
+      "charging_duration": 4.0,
+      "company": "CNFL",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 44.3,
+      "vehicle_age": 0.3,
+      "charging_duration": 2.8,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 80.4,
+      "vehicle_age": 8.7,
+      "charging_duration": 0.6,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 28.1,
+      "vehicle_age": 2.6,
+      "charging_duration": 1.3,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 54.9,
+      "vehicle_age": 0.6,
+      "charging_duration": 2.1,
+      "company": "CNFL",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 63.4,
+      "vehicle_age": 4.0,
+      "charging_duration": 0.9,
+      "company": "CNFL",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 77.1,
+      "vehicle_age": 1.9,
+      "charging_duration": 3.1,
+      "company": "ICE",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 56.0,
+      "vehicle_age": 4.1,
+      "charging_duration": 2.2,
+      "company": "ICE",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 40.3,
+      "vehicle_age": 5.4,
+      "charging_duration": 3.5,
+      "company": "ICE",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 90.2,
+      "vehicle_age": 5.2,
+      "charging_duration": 1.0,
+      "company": "CNFL",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 67.6,
+      "vehicle_age": 0.3,
+      "charging_duration": 2.9,
+      "company": "CNFL",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 49.9,
+      "vehicle_age": 2.7,
+      "charging_duration": 2.6,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 82.0,
+      "vehicle_age": 6.0,
+      "charging_duration": 1.8,
+      "company": "ICE",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 61.5,
+      "vehicle_age": 1.3,
+      "charging_duration": 2.4,
+      "company": "CNFL",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 68.4,
+      "vehicle_age": 9.2,
+      "charging_duration": 1.5,
+      "company": "CNFL",
+      "period": "Punta"
+    },
+    {
+      "battery_capacity": 36.6,
+      "vehicle_age": 5.8,
+      "charging_duration": 3.8,
+      "company": "ICE",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 21.0,
+      "vehicle_age": 2.0,
+      "charging_duration": 2.5,
+      "company": "ICE",
+      "period": "Nocturno"
+    },
+    {
+      "battery_capacity": 39.8,
+      "vehicle_age": 9.6,
+      "charging_duration": 1.2,
+      "company": "CNFL",
+      "period": "Valle"
+    },
+    {
+      "battery_capacity": 95.1,
+      "vehicle_age": 3.7,
+      "charging_duration": 2.7,
+      "company": "CNFL",
+      "period": "Nocturno"
+    }
+  ]
+  
