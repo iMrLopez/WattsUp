@@ -18,3 +18,30 @@ export default interface Car {
   discontinue_date: string;
   is_available: boolean;
 }
+
+// Mirror your backend Pydantic model:
+export interface EstimateInput {
+  battery_capacity: number
+  vehicle_age: number
+  charging_duration: number
+  company: string
+  period: string
+}
+
+// Shape of the JSON response:
+export interface EstimateResponse {
+  energy_kwh: number
+  estimated_cost: number
+}
+
+
+
+export interface Tariff {
+  periodName: string
+  costKwh: number
+}
+
+export interface Company {
+  companyName: string
+  tariffs: Tariff[]
+}

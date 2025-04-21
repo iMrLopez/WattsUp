@@ -1,8 +1,8 @@
-from core.prolog_engine import seed_battery_age_facts
+from routers import meta
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
-from routers import query, cars
+from routers import query, estimate
 
 app = FastAPI(title="My FastAPI App")
 
@@ -17,7 +17,8 @@ app.add_middleware(
 
 # Include routers.
 app.include_router(query.router, prefix="/query", tags=["query"])
-app.include_router(cars.router, prefix="/cars", tags=["cars"])
+app.include_router(meta.router, prefix="/meta", tags=["meta"])
+app.include_router(estimate.router, prefix="/estimate", tags=["estimate"])
 
 @app.get("/")
 def read_root():
