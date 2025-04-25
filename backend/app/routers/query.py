@@ -1,6 +1,8 @@
 from typing import Any
+
+from engine.prolog_engine import (add_prolog, query_prolog,
+                                  seed_battery_age_facts)
 from fastapi import APIRouter
-from engine.prolog_engine import query_prolog, add_prolog, seed_battery_age_facts
 from models import FactInput
 
 router = APIRouter()

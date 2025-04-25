@@ -1,9 +1,11 @@
-from fastapi import APIRouter, HTTPException
 from typing import Any
+
 from engine.prolog_engine import prepare_prolog_facts, query_prolog
+from fastapi import APIRouter, HTTPException
 from models import EstimateInput
 
 router = APIRouter()
+
 
 @router.post("/")
 def estimate(input: EstimateInput) -> Any:
@@ -18,23 +20,20 @@ def estimate(input: EstimateInput) -> Any:
         # 2) Inferir consumo en kWh
         energy_kwh = query_prolog("energy_required")
         if energy_kwh is None:
-            raise HTTPException(status_code=400, detail="No se pudo inferir energy_required")
+            raise HTTPException(
+                status_code=400, detail="No se pudo inferir energy_required"
+            )
 
         # 3) Inferir costo en colones usando estimate_cost/3
         #    (recuerda pasar company y period entre comillas simples)
-        cost = query_prolog(
-            "estimate_cost",
-            f"'{input.company}'",
-            f"'{input.period}'"
-        )
+        cost = query_prolog("estimate_cost", f"'{input.company}'", f"'{input.period}'")
         if cost is None:
-            raise HTTPException(status_code=400, detail="No se pudo inferir estimate_cost")
+            raise HTTPException(
+                status_code=400, detail="No se pudo inferir estimate_cost"
+            )
 
         # 4) Devolver resultado
-        return {
-            "energy_kwh":     energy_kwh,
-            "estimated_cost": cost
-        }
+        return {"energy_kwh": energy_kwh, "estimated_cost": cost}
 
     except HTTPException:
         # Re-lanzar errores HTTP provocados arriba

@@ -1,8 +1,11 @@
 from typing import List
+
 from pydantic import BaseModel
+
 
 class FactInput(BaseModel):
     fact: str
+
 
 class Car(BaseModel):
     id: int
@@ -27,18 +30,19 @@ class Car(BaseModel):
     class Config:
         orm_mode = True
 
-class EstimateInput(BaseModel):
-    battery_capacity: float    # kWh
-    vehicle_age:       float    # años
-    charging_duration: float    # horas
-    company:           str      # 'CNFL' o 'ICE'
-    period:            str      # 'Punta', 'Valle' o 'Nocturno'
 
+class EstimateInput(BaseModel):
+    battery_capacity: float  # kWh
+    vehicle_age: float  # años
+    charging_duration: float  # horas
+    company: str  # 'CNFL' o 'ICE'
+    period: str  # 'Punta', 'Valle' o 'Nocturno'
 
 
 class TariffInfo(BaseModel):
     periodName: str
     costKwh: float
+
 
 class CompanyInfo(BaseModel):
     companyName: str

@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException
 from typing import Dict, List
+
 from database import get_db_connection
+from fastapi import APIRouter, HTTPException
 from models import Car, CompanyInfo, TariffInfo
 
 router = APIRouter()
@@ -9,7 +10,7 @@ router = APIRouter()
 @router.get(
     "/companies_and_tariffs",
     response_model=Dict[str, List[str]],
-    summary="Devuelve listas de compañías y periodos de tarifa"
+    summary="Devuelve listas de compañías y periodos de tarifa",
 )
 def get_companies_and_tariffs() -> Dict[str, List[str]]:
     try:
@@ -18,23 +19,21 @@ def get_companies_and_tariffs() -> Dict[str, List[str]]:
                 # 1) Leer todas las compañías
                 cur.execute("SELECT company FROM company_view;")
                 companies = [row[0] for row in cur.fetchall()]
-                
+
                 # 2) Leer todos los periodos (tarifas)
                 cur.execute("SELECT period FROM period_view;")
                 tariffs = [row[0] for row in cur.fetchall()]
 
-        return {
-            "companies": companies,
-            "tariffs":   tariffs
-        }
+        return {"companies": companies, "tariffs": tariffs}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al leer metadata: {e}")
 
+
 @router.get(
     "/companies-with-tariffs",
     response_model=List[CompanyInfo],
-    summary="Devuelve cada compañía con su lista de periodos y costo por kWh"
+    summary="Devuelve cada compañía con su lista de periodos y costo por kWh",
 )
 def get_companies_with_tariffs() -> List[CompanyInfo]:
     try:
@@ -49,9 +48,7 @@ def get_companies_with_tariffs() -> List[CompanyInfo]:
         for company, period, rate in rows:
             if company not in companies_map:
                 companies_map[company] = []
-            companies_map[company].append(
-                TariffInfo(periodName=period, costKwh=rate)
-            )
+            companies_map[company].append(TariffInfo(periodName=period, costKwh=rate))
 
         # Convertir a lista de CompanyInfo
         result: List[CompanyInfo] = [
@@ -62,7 +59,6 @@ def get_companies_with_tariffs() -> List[CompanyInfo]:
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al cargar tarifas: {e}")
-
 
 
 @router.get("/cars", response_model=List[Car])
@@ -101,8 +97,8 @@ def get_all_cars():
                 image_url=str(row[14]),
                 launch_date=str(row[15]),
                 discontinue_date=str(row[16]),
-                is_available=bool(row[17])
-            ) 
+                is_available=bool(row[17]),
+            )
             for row in rows
         ]
 
